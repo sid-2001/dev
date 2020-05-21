@@ -1,0 +1,323 @@
+<!doctype.html>
+<html>
+
+<head>  
+<!--    responive-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--boot strap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    
+   
+    
+    
+<!--   custom script -->
+    <script>
+    var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+    </script>
+    
+        
+    
+    
+<!--    icon-->
+  <script src="https://kit.fontawesome.com/4609681b3c.js" crossorigin="anonymous"></script>
+<!--    custom-style-->
+    <link rel="stylesheet" href="style.css"type="text/css">
+</head>
+<body>
+    <div class=" first-cont">
+<nav class="navbar navbar-expand-lg navbar-dark ">
+    <a class="navbar-brand"><strong><H1>KAUSHIK</H1></strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link nav-ltr" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link nav-ltr" href="#">CONTACT</a>
+        </li> 
+        <li class="nav-item">
+        <a class="nav-link nav-ltr" href="#">PORTFOLIO</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link nav-ltr" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link nav-ltr" href="#">Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+        <div class="container-fluid sec-font ">
+            <div class="container sub-sec-font">
+                <p class="text-center"><i class="fab fa-wolf-pack-battalion fa-5x cen-log "></i></p>
+                <h1 class="text-light text-center"><strong>I am Siddhant Kaushik</strong></h1>
+                 <h1 class="text-center">
+  <a href="" class="typewrite text-center" data-period="2000" data-type='[ "Hi!","I m Siddhant!", "I am Creative!", "I Love Devlife!","I Make Web!" ]'>
+    <span class="wrap"></span>
+  </a>
+        </h1>
+            </div>
+        </div>
+    </div>
+<!--    about sectiomn-->
+    <div class="secound-cont bg-danger p-3 bg-light ">
+        <div class="row crime p-1 m-3 bg-white">
+<!--            left-section-->
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="container-fluid row crime-sec m-0 p-2">
+            <div class="col-md-6 col-sm-12 m-0 p-2 thopda"></div>
+            <div class="col-md-6 col-sm-12 m-0 p-2">
+               
+                <p class="lead"><b><strong>NAME:</strong> Siddhant Kaushik</b></p>
+                <p class="lead"><b><strong>PROFILE:</strong> Full-stack-devloper</b></p>
+                <p class="lead"><b><strong>EMAIL:</strong></b> gdfs@gmail.com</p>
+                <p class="lead"><b><strong>CONTACT:</strong>77445-77747-44774</b></p>
+                </div>
+            <div class="col-sm-12">
+                   <h3 class="p-1">HTML</h3>
+    <div class="progress ">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+    90%
+  </div>
+</div>
+<!--2-->
+            <H3 class="p-1">CSS</H3>
+     <div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width:78%">
+    78%
+  </div>
+</div>
+<!--  3-->
+            <H3 class="p-1">Java Script</H3>
+            <div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+40%
+  </div>
+</div>
+                </div>
+            </div>
+            </div>
+<!--            right-section-->
+        <div class="col-lg-6 col-md-6 col-sm-12">
+         <div class="container-fluid abot-right">
+            <h2 class="text-center p-1">About</h2>
+            <p class="lead p-1">
+             Writers write descriptive paragraphs because their purpose is to describe something. Their point is that something is beautiful or disgusting or strangely intriguing. Writers write persuasive and argument paragraphs because their purpose is to persuade or convince someone. Their point is that their reader should see things a particular.</p>
+                <p class="lead p-1">Writers write descriptive paragraphs because their purpose is to describe something. Their point is that something is beautiful or disgusting or strangely intriguing. Writers write persuasive and argument paragraphs because their purpose is to persuade or convince someone.</p>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+<!--    card -container-->
+    <div class="container-fluid bg-light p-3">
+    <h1 class="p-2 text-center"><strong>Services</strong></h1>
+        <div class="row bg-light p-2">
+    <div class="col-md-4 p-2"><div class="card"><div class="card-body"><h2 class=" p-1 card-title text-center"><i class="fas fa-air-freshener fa-2x"></i></h2><p class="card-text text-center p-1">
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia, provident vitae! Magni tempora perferendis eum non provident.</p></div></div></div> 
+        <div class="col-md-4 p-2"><div class="card"><div class="card-body"><h2 class=" p-1 card-title text-center"><i class="fas fa-code fa-2x"></i></h2><p class="card-text text-center p-1">
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia, provident vitae! Magni tempora perferendis eum non provident.</p></div></div></div>    
+                <div class="col-md-4 p-2"><div class="card"><div class="card-body"><h2 class=" p-1 card-title text-center"><i class="fas fa-air-freshener fa-2x"></i></h2><p class="card-text text-center p-1">
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia, provident vitae! Magni tempora perferendis eum non provident.</p></div></div></div>    
+        
+        </div>
+        
+         <div class="row bg-light p-2">
+    <div class="col-md-4 p-2"><div class="card"><div class="card-body"><h2 class=" p-1 card-title text-center"><i class="fas fa-code fa-2x"></i></h2><p class="card-text text-center p-1">
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia, provident vitae! Magni tempora perferendis eum non provident.</p></div></div></div> 
+        <div class="col-md-4 p-2"><div class="card"><div class="card-body"><h2 class=" p-1 card-title text-center"><i class="fas fa-air-freshener fa-2x"></i></h2><p class="card-text text-center p-1">
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia, provident vitae! Magni tempora perferendis eum non provident.</p></div></div></div>    
+                <div class="col-md-4 p-2"><div class="card"><div class="card-body"><h2 class=" p-1 card-title text-center"><i class="fas fa-code fa-2x"></i></h2><p class="card-text text-center p-1">
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia, provident vitae! Magni tempora perferendis eum non provident.</p></div></div></div>    
+        
+        </div>
+    
+    
+    </div>
+    
+<!--    counters-section-->
+    <div class="counter">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="employees">
+                    <p class="counter-count">879</p>
+                    <p class="employee-p">Employee</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="customer">
+                    <p class="counter-count">954</p>
+                    <p class="customer-p">Customer</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="design">
+                    <p class="counter-count">1050</p>
+                    <p class="design-p">Design</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="order">
+                    <p class="counter-count">652</p>
+                    <p class="order-p">Orders</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>$('.counter-count').each(function () {
+        $(this).prop('Counter',0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 5000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });</script>
+    
+    <div class="container-fluid bg-light p-3">
+        <h1 class="text-center p-2"><strong>PORTFOLIO</strong></h1>
+        <DIV CLASS="row">
+            <div class="col-md-4 p-2"><div class="card"><div class="card-img-top"></div>
+                <div class="body"><h3 class="text-center">KAUSHIK THE GREAT</h3><p class="text-center text-secoundary"><a>Web Design</a>/14 sept 2014</p></div></div></div>
+            <div class="col-md-4 p-2"><div class="card"><div class="card-img-top"></div><div class="body"><h3 class="text-center">KAUSHIK THE GREAT</h3><p class="text-center text-secoundary"><a>Web Design</a>/14 sept 2014</p></div></div></div>
+            <div class="col-md-4 p-2"><div class="card"><div class="card-img-top"></div><div class="body"><h3 class="text-center">KAUSHIK THE GREAT</h3><p class="text-center text-secoundary"><a>Web Design</a>/14 sept 2014</p></div></div></div>
+        </DIV>
+
+        <DIV CLASS="row">
+            <div class="col-md-4 p-2"><div class="card"><div class="card-img-top"></div><div class="body"><h3 class="text-center">KAUSHIK THE GREAT</h3><p class="text-center text-secoundary"><a>Web Design</a>/14 sept 2014</p></div></div></div>
+        <div class="col-md-4 p-2"><div class="card"><div class="card-img-top"></div><div class="body"><h3 class="text-center ">KAUSHIK THE GREAT</h3><p class="text-center text-secoundary"><a>Web Design</a>/14 sept 2014</p></div></div></div>
+    <div class="col-md-4 p-2"><div class="card"><div class="card-img-top"></div><div class="body"><h3 class="text-center">KAUSHIK THE GREAT</h3><p class="text-center text-secoundary"><a>Web Design</a>/14 sept 2014</p></div></div></div>
+        </DIV>
+        
+    
+    
+    </div>
+<!--    carosel-->
+    <div class=" container-fluid cro">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner p-3">
+    <div class="carousel-item active">
+      <h1 class="text-center"><strong>SIDDHANT</strong></h1>
+        <p class="lead text-center">jisdfjs snfjs fnsdkdfsdnfjs fjsnf sd fjknsd fn sjk f sdn fnan k fasnm fklam,fsalklf fmslfs mf msaf,fsf sjf jkafkalflaf ajkjkfnjasn</p>
+    </div>
+    <div class="carousel-item">
+     <h1 class="text-center"><strong>KAUSHIK</strong></h1>
+        <p class="lead text-center">jisdfjs snfjs fnsdkdfsdnfjs fjsnf sd fjknsd fn sjk f sdn fnan k fasnm fklam,fsalklf fmslfs mf msaf,fsf sjf jkafkalflaf ajkjkfnjasn</p>
+    </div>
+    <div class="carousel-item">
+      <h1 class="text-center"><strong>RAJKUMAR</strong></h1>
+        <p class="lead text-center">jisdfjs snfjs fnsdkdfsdnfjs fjsnf sd fjknsd fn sjk f sdn fnan k fasnm fklam,fsalklf fmslfs mf msaf,fsf sjf jkafkalflaf ajkjkfnjasn</p>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+    </div>
+    <div class="container-fluid fut p-5 ">
+    <div class="row text-center p-1 bg-white">
+        
+                
+        <div class="col-md-6 p-1">
+            <h2 class="text-center"><strong>Send Message To Us</h2></strong></h2>
+         <input type="text" class="form-control" placeholder="First Name">
+            <br>
+             <input type="text" class="form-control" placeholder="Last Name">
+            <br>
+             <input type="text" class="form-control" placeholder="Email"><br>
+        <button class="btn btn-lg btn-primary">Download</button>
+        </div>
+        <div class="col-md-6 p-1">
+        <h2 class="text-center"><strong>Get In Touch</strong></h2>
+            <p class="lead">Writers write descriptive paragraphs because their purpose is to describe something. Their point is that something is beautiful or disgusting or strangely intriguing. Writers write persuasive and argument paragraphs because their purpose is to persuade or convince someone.</p>
+            <p class="lead">Writers write descriptive paragraphs because their purpose is to describe something. Their point is that something is beautiful or disgusting or strangely intriguing. Writers write persuasive and argument paragraphs because their purpose is to persuade or convince someone.</p>
+        </div>
+        
+        
+        </div>
+    
+    </div>
+        
+    </body>
